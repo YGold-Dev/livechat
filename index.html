@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>WebSocket Chat Test</h2>
+
+<input id="msgInput" placeholder="메시지 입력" />
+<button onclick="sendMsg()">전송</button>
+
+<div id="chat"></div>
+
+<script>
+  const token = prompt("JWT 토큰을 입력하세요:");
+  const ws = new WebSocket("ws://localhost:3000/chat?token=" + token);
+
+  ws.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    document.getElementById("chat").innerHTML +=
+      `<p><b>${data.username}:</b> ${data.content}</p>`;
+  };
+
+  function sendMsg() {
+    const msg = document.getElementById("msgInput").value;
+    ws.send(JSON.stringify({ content: msg }));
+  }
+</script>
+
+</body>
+</html>

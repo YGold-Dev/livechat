@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="chat.css" />
+  <title>Realtime Chat</title>
+</head>
+<body>
+
+  <div class="chat-container">
+
+    <div class="chat-header">
+      <h2>Realtime Chat</h2>
+      <button class="logout-btn" onclick="logout()">Sign out</button>
+    </div>
+
+    <div id="chatbox" class="chat-box"></div>
+
+    <div class="input-area">
+      <input id="msg" placeholder="메시지 입력..." />
+      <button class="send-btn" onclick="sendMsg()">Send</button>
+    </div>
+
+  </div>
+
+
+<script>
+const token = localStorage.getItem("token");
+
+// 토큰 없으면 로그인 페이지로
+if (!token) {
+  location.href = "login.html";
+}
+
+const ws = new WebSocket("ws://175.112.106.157:3000/chat?token=" + token);
+
+ws.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+  const chat = document.getElementById("chatbox");
+
+  chat.innerHTML += `
+      <div class="msg-line">
+          <span class="msg-user">${data.username}</span>
+          <span class="msg-text">${data.content}</span>
+      </div>
+  `;
+
+  chat.scrollTop = chat.scrollHeight; // 자동 스크롤
+};
+
+function sendMsg() {
+  const msg = document.getElementById("msg").value;
+  if (msg.trim() === "") return;
+
+  ws.send(JSON.stringify({ content: msg }));
+  document.getElementById("msg").value = "";
+}
+
+function logout() {
+  localStorage.removeItem("token");
+  location.href = "login.html";
+}
+document.getElementById("msg").addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    sendMsg();
+  }
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="box">
+        <div class="auth-left">
+            <div class="form-box">
+                <h2>Sign Up</h2>
+
+                <input id="username" placeholder="Username" />
+                <input id="password" type="password" placeholder="Password" />
+
+                <button onclick="register()">Sign Up</button>
+
+                <p>Already have an account? <a href="login.html">sign in</a></p>
+            </div>
+        </div>
+
+        <div class="auth-right">
+        </div>
+    </div>
+
+    <script>
+        function register() {
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+
+          fetch("http://localhost:3000/api/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+          })
+          .then(r => r.json())
+          .then(data => {
+            alert(data.message);
+            if (data.message === "회원가입 성공!") {
+              location.href = "login.html";
+            }
+        });
+    }
+    </script>
+</body>
+</html>
