@@ -30,9 +30,6 @@ function register() {
     .then(r => r.json())
     .then(data => {
         alert(data.message);
-        if (data.message === "회원가입 성공!") {
-            location.href = "login.html";
-        }
     });
 }
 

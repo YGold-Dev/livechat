@@ -34,7 +34,8 @@ if (!token) {
   location.href = "login.html";
 }
 
-const ws = new WebSocket("ws://175.112.106.157:3000/chat?token=" + token);
+const wsProtocol = location.protocol === "https:" ? "wss" : "ws";
+const ws = new WebSocket(`${wsProtocol}://${location.host}/chat?token=${token}`);
 
 ws.onmessage = (event) => {
   const data = JSON.parse(event.data);
