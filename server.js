@@ -104,7 +104,7 @@ app.post('/api/login', async (req,res) => {
     return res.status(400).json({ message: "Wrong PW" });
   }
 
-  const SECRET_KEY = "MY_SECRET_KEY_1234";
+  const SECRET_KEY = "ygolddecodementtestdecoderloginsigninpage";
 
   const token = jwt.sign(
     { username: user.username },
