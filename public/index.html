@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Live Chat Service</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- 기존 공용 스타일 -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* 메인 전용 스타일 (기존 톤이랑 비슷하게) */
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #e4e7ee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .home-container {
+      width: 960px;
+      max-width: 100%;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+      display: flex;
+      overflow: hidden;
+    }
+
+    .home-left,
+    .home-right {
+      flex: 1;
+      padding: 40px 48px;
+      box-sizing: border-box;
+    }
+
+    /* 왼쪽: 소개 영역 */
+    .home-left {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .home-logo {
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      margin-bottom: 12px;
+    }
+
+    .home-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .home-subtitle {
+      font-size: 15px;
+      line-height: 1.6;
+      opacity: 0.95;
+      margin-bottom: 32px;
+    }
+
+    .home-feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .home-feature-list li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 8px;
+    }
+
+    .home-feature-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #bfdbfe;
+    }
+
+    /* 오른쪽: 버튼 / 액션 영역 */
+    .home-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .home-right h2 {
+      font-size: 24px;
+      margin: 0 0 8px;
+    }
+
+    .home-right p {
+      margin: 0;
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .home-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn-main {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: none;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.08s ease, box-shadow 0.12s ease, background 0.12s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-main:active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: #ffffff;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      color: #111827;
+      border: 1px solid #d1d5db;
+    }
+
+    .btn-outline:hover {
+      background: #f9fafb;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #6b7280;
+    }
+
+    .home-footer-text {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: 12px;
+    }
+
+    .home-highlight {
+      color: #2563eb;
+      font-weight: 600;
+    }
+
+    /* 모바일 대응 */
+    @media (max-width: 768px) {
+      .home-container {
+        flex-direction: column;
+        border-radius: 0;
+        height: 100vh;
+      }
+
+      .home-left,
+      .home-right {
+        padding: 24px 20px;
+      }
+
+      .home-title {
+        font-size: 24px;
+      }
+
+      .home-right h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="home-container">
+    <!-- 왼쪽: 서비스 소개 -->
+    <div class="home-left">
+      <div class="home-logo">LIVE CHAT SERVICE</div>
+      <div class="home-title">실시간 대화, 더 간단하게.</div>
+      <p class="home-subtitle">
+        로그인만 하면 바로 시작되는 실시간 채팅 서비스입니다.<br />
+        브라우저만 있으면 PC와 모바일 어디서든 대화할 수 있어요.
+      </p>
+
+      <ul class="home-feature-list">
+        <li>
+          <span class="home-feature-dot"></span>
+          <span>WebSocket 기반 초간단 실시간 메시지</span>
+        </li>
+        <li>
+          <span class="home-feature-dot"></span>
+          <span>JWT 인증으로 로그인 상태 유지</span>
+        </li>
+        <li>
+          <span class="home-feature-dot"></span>
+          <span>Render 호스팅으로 언제 어디서나 접속 가능</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 오른쪽: 액션(버튼) 영역 -->
+    <div class="home-right">
+      <div>
+        <h2>지금 바로 시작해볼까요?</h2>
+        <p>이미 계정이 있다면 로그인, 없다면 회원가입 후 바로 채팅을 시작하세요.</p>
+
+        <div class="home-buttons">
+          <button class="btn-main btn-primary" onclick="goChat()">
+            💬 바로 채팅 참여하기
+          </button>
+          <button class="btn-main btn-outline" onclick="goLogin()">
+            로그인하기
+          </button>
+          <button class="btn-main btn-ghost" onclick="goRegister()">
+            아직 계정이 없으신가요? <span class="home-highlight">회원가입</span>
+          </button>
+        </div>
+
+        <p class="home-footer-text">
+          이미 로그인한 상태라면 <span class="home-highlight">바로 채팅 참여하기</span>를 눌러 주세요.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function goLogin() {
+      window.location.href = "login.html";
+    }
+
+    function goRegister() {
+      window.location.href = "register.html";
+    }
+
+    function goChat() {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        // 토큰 없으면 로그인 먼저
+        alert("채팅을 이용하려면 먼저 로그인 해주세요.");
+        window.location.href = "login.html";
+        return;
+      }
+      window.location.href = "chat.html";
+    }
+  </script>
+</body>
+</html>
