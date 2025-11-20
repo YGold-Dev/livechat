@@ -199,24 +199,24 @@
     <!-- 왼쪽: 서비스 소개 -->
     <div class="home-left">
       <div class="home-logo">LIVE CHAT SERVICE</div>
-      <div class="home-title">실시간 대화, 더 간단하게.</div>
+      <div class="home-title">Realtime Chat Service</div>
       <p class="home-subtitle">
-        로그인만 하면 바로 시작되는 실시간 채팅 서비스입니다.<br />
-        브라우저만 있으면 PC와 모바일 어디서든 대화할 수 있어요.
+        Make your communication.<br />
+        With any devices including mobile and desktop.
       </p>
 
       <ul class="home-feature-list">
         <li>
           <span class="home-feature-dot"></span>
-          <span>WebSocket 기반 초간단 실시간 메시지</span>
+          <span>Realtime message based on WebSocket</span>
         </li>
         <li>
           <span class="home-feature-dot"></span>
-          <span>JWT 인증으로 로그인 상태 유지</span>
+          <span>Stay signed in with Json Web Tokens</span>
         </li>
         <li>
           <span class="home-feature-dot"></span>
-          <span>Render 호스팅으로 언제 어디서나 접속 가능</span>
+          <span>World-wide service with Render Hosting</span>
         </li>
       </ul>
     </div>
@@ -224,23 +224,23 @@
     <!-- 오른쪽: 액션(버튼) 영역 -->
     <div class="home-right">
       <div>
-        <h2>지금 바로 시작해볼까요?</h2>
-        <p>이미 계정이 있다면 로그인, 없다면 회원가입 후 바로 채팅을 시작하세요.</p>
+        <h2>Want to get started?</h2>
+        <p>Sign up and Sign in to get started</p>
 
         <div class="home-buttons">
           <button class="btn-main btn-primary" onclick="goChat()">
-            💬 바로 채팅 참여하기
+            💬 Get Into Chat
           </button>
           <button class="btn-main btn-outline" onclick="goLogin()">
-            로그인하기
+            Sign In
           </button>
           <button class="btn-main btn-ghost" onclick="goLogin()">
-            아직 계정이 없으신가요? <span class="home-highlight">회원가입</span>
+            No account yet? <span class="home-highlight">Register</span>
           </button>
         </div>
 
         <p class="home-footer-text">
-          이미 로그인한 상태라면 <span class="home-highlight">바로 채팅 참여하기</span>를 눌러 주세요.
+          If you already signed in, click on <span class="home-highlight">Get Into Chat</span>
         </p>
       </div>
     </div>
@@ -255,7 +255,7 @@
       const token = localStorage.getItem("token");
       if (!token) {
         // 토큰 없으면 로그인 먼저
-        alert("채팅을 이용하려면 먼저 로그인 해주세요.");
+        alert("Sign in to use our service");
         window.location.href = "login.html";
         return;
       }
