@@ -25,12 +25,9 @@ wss.on("connection", (ws, req) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const token = url.searchParams.get("token");
 
-  console.log("받은 토큰:", token);   // ★ 추가
-
   let username = null;
   try {
     const decoded = jwt.verify(token, "ygolddecodementtestdecoderloginsigninpage");
-    console.log("디코딩 결과:", decoded);   // ★ 추가
     username = decoded.username;
   } catch (err) {
     console.error("JWT 인증 실패:", err);   // ★ 추가
